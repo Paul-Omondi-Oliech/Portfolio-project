@@ -30,3 +30,53 @@ Expected a return summary data to be more than zero
 Expected return summary data to be empty
 
 
+## Consuming API
+The API can be consume by sending a GET request to [Vaccine summary end point](http://localhost:5000/vaccine-summary)
+
+The following query string is required
+* **c**, country code to get report for
+* **dateFrom**, yyyy-Www, eg. 2020-W10 (Including)
+* **dateTo**, yyyy-Www, eg, 2020-W20 (Excluding)
+* **rangeSize**, number, eg, the period for which to calculate metrics
+* **sort**, either by **NumberDosesReceived**[descending] or **weekStart** [ascending]
+
+You API call should be like this:
+* (http://localhost:5000/vaccine-summary?c=AT&dateFrom=2020-W10&dateTo=2020-W53&range=5)
+
+Expected return:
+```
+{
+    "summary": [
+        {
+            "NumberDosesReceived": "0",
+            "weekStart": "2020-W10",
+            "weekEnd": "2020-W53"
+        },
+        {
+            "NumberDosesReceived": "0",
+            "weekStart": "2020-W10",
+            "weekEnd": "2020-W53"
+        },
+        {
+            "NumberDosesReceived": "0",
+            "weekStart": "2020-W10",
+            "weekEnd": "2020-W53"
+        },
+        {
+            "NumberDosesReceived": "0",
+            "weekStart": "2020-W10",
+            "weekEnd": "2020-W53"
+        },
+        {
+            "NumberDosesReceived": "0",
+            "weekStart": "2020-W10",
+            "weekEnd": "2020-W53"
+        }
+    ]
+}
+
+```
+
+## API limit
+- Your request is limit to 5 in 5 minutes.
+
